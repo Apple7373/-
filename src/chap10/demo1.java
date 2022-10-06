@@ -35,4 +35,8 @@ public class demo1 {
     public static void doOther() {
         System.out.println("do Other");
     }
+    public void B(){
+        System.out.println("b");
+    }
+
 }

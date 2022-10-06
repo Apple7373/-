@@ -32,4 +32,7 @@ public class demo1 {
     public static void doSome() {
         System.out.println("doSome");
     }
+    public static void doOther() {
+        System.out.println("do Other");
+    }
 }

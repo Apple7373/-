@@ -29,4 +29,7 @@ public class demo1 {
             System.out.println("file error!");
         }
     }
+    public static void doSome() {
+        System.out.println("doSome");
+    }
 }

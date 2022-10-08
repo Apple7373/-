@@ -14,7 +14,6 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class PanelGridLayout extends JPanel implements Runnable {
-	//	Algorithm alu;
 	public int flag = 0; // 单步调试
 	int[] a;
 	int[] f;
@@ -74,7 +73,6 @@ public class PanelGridLayout extends JPanel implements Runnable {
 				}
 			}
 		}
-//		System.out.println("the answer is " + ans);
 	}
 
 	public void run() {

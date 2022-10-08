@@ -2,42 +2,34 @@ package algorithm;
 /*
  *   algorithm
  *   Author：fjs
- *   2022-09-25
- *   11:17
+ *   2022-10-08
+ *   8:58
  */
+
 
 import javax.swing.*;
 import java.awt.*;
 
-class ShowLayout extends JFrame {
-
-	PanelGridLayout02 panelGrid;
+public class midJpanel extends JFrame{
+	PanelGridLayout panelGrid;
 	public JButton jb;
 	public JButton MaxSum;
-	public JButton curSum;
 	PoliceListener listener;
-	JPanel j;
-	ShowLayout() {
-		curSum = new JButton("curSum = ");
+	midJpanel() {
 		jb = new JButton("下一步");
-		MaxSum = new JButton("Maxsum = ");
+
+		MaxSum = new JButton();
 		listener = new PoliceListener(); // 鼠标监听器
-		panelGrid = new PanelGridLayout02();
+		panelGrid = new PanelGridLayout();
 		Thread a = new Thread(panelGrid);
 		a.start();
 
 		setLayout(new BorderLayout());
-		j = new JPanel();
-		j.setLayout(new GridLayout(1,2));
-		j.add(curSum);
-		j.add(MaxSum);
-		add(j, BorderLayout.NORTH);
 		//this.setBounds(400,200,1500,1500);
 		add(panelGrid, BorderLayout.CENTER);
 
-//		add(ans, BorderLayout.NORTH);
+		add(MaxSum, BorderLayout.NORTH);
 		// ans.addActionListener(listener);
-//		add(curSum, BorderLayout.SOUTH);
 		add(jb, BorderLayout.SOUTH);
 		listener.setView(this);
 		jb.addActionListener(listener);  // jb添加监视器

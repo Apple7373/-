@@ -7,6 +7,7 @@ package algorithm;
  */
 
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class sumOfSub {
@@ -16,7 +17,7 @@ public class sumOfSub {
 		System.out.print("请输入数据个数：");
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		int[] array = new int[n + 1];
+		int[] array = new int[n];
 		System.out.print("请依次输入每个数：");
 		for (int i = 0; i < n; i++) {
 			array[i] = sc.nextInt();
@@ -28,7 +29,7 @@ public class sumOfSub {
 				"3、使用二分优化O(nlogn)\n " +
 				"4、动态规划O(n)\n");
 		int op = sc.nextInt();
-		int ans = 0;
+		int ans = Integer.MIN_VALUE;
 		switch (op) {
 			case 1:
 				ans = Sum1(array, n);
@@ -48,12 +49,12 @@ public class sumOfSub {
 
 	// 暴力算法 O(n^3)
 	public static int Sum1(int[] array, int n) {
-		int MaxSum = 0, curSum;
+		int MaxSum = Integer.MIN_VALUE, curSum;
 		if (array == null || array.length == 0)
-			return 0;
+			return MaxSum;
 		else {
 			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < n; j++) {
+				for (int j = i; j < n; j++) {
 					curSum = 0;
 					for (int k = i; k <= j; k++) {
 						curSum = curSum + array[k];
@@ -68,7 +69,7 @@ public class sumOfSub {
 
 	// 暴力算法改进 O(n^2)
 	public static int Sum2(int[] array, int n) {
-		int MaxSum = 0;
+		int MaxSum = Integer.MIN_VALUE;
 		if (array.length == 0)
 			return 0;
 		else {
@@ -124,6 +125,7 @@ public class sumOfSub {
 	public static int Sum4(int[] arr) {
 		int n = arr.length;
 		int[] f = new int[n];
+		Arrays.fill(f, Integer.MIN_VALUE);
 		int ans = arr[0];
 		f[0] = arr[0];
 		for (int i = 1; i < n; i++) {

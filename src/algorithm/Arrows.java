@@ -31,5 +31,4 @@ public class Arrows extends JPanel { // 箭头
 		g_2d.draw(L3);
 		g_2d.draw(L);
 	}
-
 }

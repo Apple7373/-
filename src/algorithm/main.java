@@ -13,9 +13,11 @@ public class main {
     public static void main(String[] args) {
 //        midJpanel mj01 = new midJpanel();
 //        mj01.setBounds(400,100,900,600);
+//
+//        ShowLayout show = new ShowLayout();
+//        show.setBounds(400,100, 900,600);
 
-        ShowLayout show = new ShowLayout();
-        show.setBounds(400,100, 900,600);
+        Layout ly = new Layout();
 
 //        JFrame win = new JFrame();
 //        win.setBounds(400,100, 900,600);

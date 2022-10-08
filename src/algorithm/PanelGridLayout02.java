@@ -6,7 +6,6 @@ package algorithm;
  *   8:49
  */
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
@@ -39,7 +38,7 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 		for (int i = 0; i < n; i++) a[i] = sc.nextInt();
 		Arrays.fill(f, 0);
 
-		int row = 2;  // 行数就是四行 固定的 两个行显示数据 两个显示箭头
+		int row = 3;  // 行数就是四行 固定的 两个行显示数据 两个显示箭头
 		int col = n;  // 列数就是 数组的长度
 		GridLayout grid = new GridLayout(row, col, 1, 10);
 		setLayout(grid);
@@ -61,6 +60,10 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 					label[i][j].setBackground(Color.gray);
 					label[i][j].setFont(font);
 					add(label[i][j]);
+				} else if (i == 2) {
+					jp[i][j] = new Arrows(x, 60);
+					add(jp[i][j]);
+					jp[i][j].setVisible(false);
 				}
 			}
 		}
@@ -72,9 +75,9 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 		int last = 0; // 记录上一个最大的 f[i]
 		MaxSum = 0;
 		for (int i = 0; i < n; i++) {
-			jp[0][i].setVisible(true);
+			jp[0][i].setVisible(true);   // 起始位置
 			for (int j = i; j < n; j++) {
-				jp[0][j].setVisible(true);
+				jp[0][j].setVisible(true);  // 终止位置
 				curSum = 0;
 				for (int k = i; k <= j; k++) {
 					curSum = curSum + a[k];
@@ -82,14 +85,29 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 					while (true) {
 						if (flag == 1) break;
 						System.out.println("here" + flag);
-						if (j == i || k == i) continue;
+						if (k > i) jp[0][i].setBackground(Color.WHITE);
+						if (j == i || k == i) {
+							jp[0][k].setBackground(Color.pink);
+							continue;
+						}
 						else if (k == i + 1) {
+							jp[0][k].setBackground(Color.pink);
 							jp[0][k].setVisible(true);
 						}
 						else {
+							jp[0][k].setBackground(Color.pink);
 							jp[0][k - 1].setVisible(false);
 							jp[0][k].setVisible(true);
 						}
+//						if (k - 1 >= i) {
+//							jp[0][k].setBackground(Color.pink);
+//							jp[0][k-1].setVisible(false);
+//							jp[0][k].setVisible(true);
+//
+//							jp[0][i].setVisible(true);
+//						}
+
+						if (flag == 1) break;  // 多次检测
 					}
 					System.out.println("跳出来了");
 					flag = 0;
@@ -100,6 +118,7 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 					if (flag == 1) break;
 					if (j != i)
 						jp[0][j].setVisible(false);
+					if (flag == 1) break;
 					System.out.println("");
 				}
 				System.out.println("跳出第二层循环");
@@ -117,65 +136,4 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 			flag = 0;
 		}
 	}
-
-//		for (int i = 0; i < n; i++) {
-//			int cnt = 1;
-//			int cnt2 = 1;    // 这些参数是为了减少对集合中坐标的插入 清空 这些东西会降低程序的速度
-//			int cnt3 = 1;
-//			int cnt4 = 1;
-//
-//			while (true) {
-//				if (flag == 1) break;
-//				if (i == 0) {
-//					if (cnt2 == 1) {
-//						idx.add(0);
-//					}
-//					ans = a[0]; // 最终答案
-//					f[0] = a[0];
-//					jp[0][0].setVisible(true);
-//
-//					label[1][0].setBackground(Color.ORANGE);
-//					last = 0;
-//					cnt2++;
-//				} else {
-//					if (f[i - 1] < 0) {
-//						// 将原来标红的删除
-//						if (cnt <= 1) {
-//							for (int index : idx) {
-//								label[1][index].setBackground(Color.gray);
-//							}
-//							cnt++;
-//							idx.clear();
-//							idx.add(i);
-//
-//						}
-//						f[i] = a[i];
-//						label[1][i].setBackground(Color.ORANGE);
-//					} else {
-//						f[i] = a[i] + f[i - 1];
-//
-//						if (cnt3 == 1) {
-//							idx.add(i);
-//							cnt3++;
-//
-//						}
-//						label[1][i].setBackground(Color.ORANGE);
-//					}
-//
-//					if (ans < f[i]) {
-//						label[3][last].setBackground(Color.gray);
-//						label[3][i].setBackground(Color.red);
-//						last = i;
-//						ans = f[i];
-//					}
-////					ans = Math.max(f[i], ans);
-//					jp[0][i - 1].setVisible(false);
-//					jp[0][i].setVisible(true);
-//					label[3][i].setText(String.valueOf(f[i]));
-//				}
-//			}
-//			flag = 0;
-//		}
-//		System.out.println("the answer is " + ans);
-//	}
 }

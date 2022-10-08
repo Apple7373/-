@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm辅助;
 /*
  *   algorithm
  *   Author：fjs
@@ -8,7 +8,6 @@ package algorithm;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Algorithm implements Runnable{
 	public int flag = 0; // 单步调试

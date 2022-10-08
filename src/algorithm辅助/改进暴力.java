@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm辅助;
 /*
  *   algorithm
  *   Author：fjs
@@ -7,11 +7,11 @@ package algorithm;
  */
 
 public class 改进暴力 {
-	public static void main(String[] args) {
-		int[] array = {-2,1,-3,4,-1,2,1,-5,4};
-		int ans = Max(array, 9);
-		System.out.println(ans);
-	}
+//	public static void main(String[] args) {
+//		int[] array = {-2,1,-3,4,-1,2,1,-5,4};
+//		int ans = Max(array, 9);
+//		System.out.println(ans);
+//	}
 
 	public static int Max(int[] array, int n) {
 		int MaxSum = 0;

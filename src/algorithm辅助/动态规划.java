@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm辅助;
 /*
  *   algorithm
  *   Author：fjs
@@ -12,11 +12,11 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 public class 动态规划 {
-	public static void main(String[] args) {
-		int[] array = {-2,1,-4,4,-1,-2,1,-5,4};
-		int ans = method_dp(array);
-		System.out.println(ans);
-	}
+//	public static void main(String[] args) {
+//		int[] array = {-2,1,-4,4,-1,-2,1,-5,4};
+//		int ans = method_dp(array);
+//		System.out.println(ans);
+//	}
 	public static int method_dp(int[] arr) {
 		int n = arr.length;
 		int[] f = new int[n];

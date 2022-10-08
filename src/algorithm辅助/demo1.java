@@ -1,4 +1,4 @@
-package chap10;
+package algorithm辅助;
 /*
  *   chap10
  *   Author：fjs

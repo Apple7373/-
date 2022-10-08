@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm辅助;
 /*
  *   algorithm
  *   Author：fjs
@@ -7,12 +7,12 @@ package algorithm;
  */
 
 public class dichotomy {
-	public static void main(String[] args) {
-//		dichotomy d = new dichotomy();
-		int[] array = {-2,100,-4,4,-1,-2,1,-5,4};
-		int ans = Max(array, 0, 8);
-		System.out.println(ans);
-	}
+//	public static void main(String[] args) {
+////		dichotomy d = new dichotomy();
+//		int[] array = {-2,100,-4,4,-1,-2,1,-5,4};
+//		int ans = Max(array, 0, 8);
+//		System.out.println(ans);
+//	}
 
 	public static int Max(int[] array, int left, int right) {
 		if (left == right) {

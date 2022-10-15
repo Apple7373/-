@@ -1,4 +1,4 @@
-package algorithm;
+package project;
 /*
  *   algorithm
  *   Author：fjs
@@ -11,9 +11,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
 
-public class Arrows extends JPanel { // 箭头
+public class Arrow extends JPanel { // 箭头
 	int x, y;
-	Arrows(int x, int y){
+	Arrow(int x, int y){
 		this.x = x;
 		this.y = y;
 	}

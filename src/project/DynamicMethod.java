@@ -1,4 +1,4 @@
-package algorithm;
+package project;
 /*
  *   algorithm
  *   Author：fjs
@@ -13,17 +13,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class PanelGridLayout extends JPanel implements Runnable {
+public class DynamicMethod extends JPanel implements Runnable {
 	public int flag = 0; // 单步调试
 	int[] a;
 	int[] f;
 	public int n = 9;
-	Arrows[][] jp;
+	Arrow[][] jp;
 	Label[][] label;
 	int ans; // 最终答案
 	Vector<Integer> idx;
 
-	PanelGridLayout() {
+	DynamicMethod() {
 		// 算法
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入数据的个数：");
@@ -41,7 +41,7 @@ public class PanelGridLayout extends JPanel implements Runnable {
 		int col = n;  // 列数就是 数组的长度
 		GridLayout grid = new GridLayout(row, col, 1, 10);
 		setLayout(grid);
-		jp = new Arrows[4][col];
+		jp = new Arrow[4][col];
 		label = new Label[4][col];
 		Font font = new Font("宋体", Font.BOLD, 16);  // 设置字体
 		int x = 500 / n / 3 * 2; // 横坐标  这是为了使得箭头尽可能的位于中间
@@ -50,7 +50,7 @@ public class PanelGridLayout extends JPanel implements Runnable {
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				if (i == 0) {
-					jp[i][j] = new Arrows(x, 60);
+					jp[i][j] = new Arrow(x, 60);
 					add(jp[i][j]);
 					jp[i][j].setVisible(false);
 				} else if (i == 1) {

@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm辅助;
 
 import java.awt.Button;
 import java.awt.Font;

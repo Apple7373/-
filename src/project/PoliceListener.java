@@ -1,4 +1,4 @@
-package algorithm;
+package project;
 /*
  *   algorithm
  *   Author：fjs
@@ -13,19 +13,19 @@ import java.awt.event.ActionListener;
 public class PoliceListener implements ActionListener {
 
 //	Object win;
-	midJpanel mj = null;
-	ShowLayout sl = null;
-	Layout ly = null;
+	DynamicJpanel mj = null;
+	ViolenceJpanel sl = null;
+	Windows ly = null;
 	// 设置窗口
 	public void setView(Object obj) {
-		if (obj instanceof midJpanel) {
-			this.mj = (midJpanel) obj;
+		if (obj instanceof DynamicJpanel) {
+			this.mj = (DynamicJpanel) obj;
 		}
-		else if (obj instanceof ShowLayout) {
-			this.sl = (ShowLayout) obj;
+		else if (obj instanceof ViolenceJpanel) {
+			this.sl = (ViolenceJpanel) obj;
 		}
-		else if (obj instanceof Layout) {
-			this.ly = (Layout) obj;
+		else if (obj instanceof Windows) {
+			this.ly = (Windows) obj;
 		}
 	}
 
@@ -42,22 +42,22 @@ public class PoliceListener implements ActionListener {
 		else if (sl != null) {
 //			pass
 			if (e.getSource() == sl.jb) {
-				System.out.println("除法鼠标事件");
+//				System.out.println("触发鼠标事件");
 				sl.panelGrid.flag = 1;
-				System.out.println("panelGrid中flag = " + sl.panelGrid.flag);
+//				System.out.println("panelGrid中flag = " + sl.panelGrid.flag);
 				sl.curSum.setText("curSum = " + sl.panelGrid.curSum);
 				sl.MaxSum.setText("MaxSum = " + sl.panelGrid.MaxSum);
 			}
 		}
 		else if (ly != null) {
 			if (e.getSource() == ly.jb1) {
-				System.out.println("发生鼠标");
-				ShowLayout show = new ShowLayout();
+//				System.out.println("发生鼠标");
+				ViolenceJpanel show = new ViolenceJpanel();
 				show.setBounds(400,100, 900,600);
 			}
 			else if (e.getSource() == ly.jb2) {
-				System.out.println("发生鼠标");
-				midJpanel mj01 = new midJpanel();
+//				System.out.println("发生鼠标");
+				DynamicJpanel mj01 = new DynamicJpanel();
 				mj01.setBounds(400,100,900,600);
 			}
 		}

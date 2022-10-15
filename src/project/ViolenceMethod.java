@@ -1,4 +1,4 @@
-package algorithm;
+package project;
 /*
  *   algorithm
  *   Author：fjs
@@ -8,23 +8,27 @@ package algorithm;
 
 import javax.swing.*;
 import java.awt.*;
+import java.nio.file.FileAlreadyExistsException;
+import java.sql.Time;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Timer;
 import java.util.Vector;
 
-public class PanelGridLayout02 extends JPanel implements Runnable {
+
+public class ViolenceMethod extends JPanel implements Runnable {
 
 	public int flag = 0; // 单步调试
 	int[] a;
 	int[] f;
 	public int n = 9;
-	Arrows[][] jp;
+	Arrow[][] jp;
 	Label[][] label;
 	int ans; // 最终答案
 	Vector<Integer> idx;
 	int MaxSum = 0, curSum;
 
-	PanelGridLayout02() {
+	ViolenceMethod() {
 		// 算法
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入数据的个数：");
@@ -42,7 +46,7 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 		int col = n;  // 列数就是 数组的长度
 		GridLayout grid = new GridLayout(row, col, 1, 10);
 		setLayout(grid);
-		jp = new Arrows[4][col];
+		jp = new Arrow[4][col];
 		label = new Label[4][col];
 		Font font = new Font("宋体", Font.BOLD, 16);  // 设置字体
 		int x = 500 / n / 3 * 2; // 横坐标  这是为了使得箭头尽可能的位于中间
@@ -51,7 +55,7 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				if (i == 0) {
-					jp[i][j] = new Arrows(x, 60);
+					jp[i][j] = new Arrow(x, 60);
 					add(jp[i][j]);
 					jp[i][j].setVisible(false);
 				} else if (i == 1) {
@@ -61,7 +65,7 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 					label[i][j].setFont(font);
 					add(label[i][j]);
 				} else if (i == 2) {
-					jp[i][j] = new Arrows(x, 60);
+					jp[i][j] = new Arrow(x, 60);
 					add(jp[i][j]);
 					jp[i][j].setVisible(false);
 				}
@@ -73,24 +77,29 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 		idx = new Vector<>();
 //		System.out.println("afadfkasjlfas");
 		int last = 0; // 记录上一个最大的 f[i]
-		MaxSum = 0;
+		MaxSum = Integer.MIN_VALUE;
 		for (int i = 0; i < n; i++) {
 			jp[0][i].setVisible(true);   // 起始位置
+			jp[0][i].setBackground(Color.white);
 			for (int j = i; j < n; j++) {
 				jp[0][j].setVisible(true);  // 终止位置
-				curSum = 0;
+				jp[0][j].setBackground(Color.white);
+				curSum = a[i];
 				for (int k = i; k <= j; k++) {
-					curSum = curSum + a[k];
-					System.out.println(flag);
+					if (k != i)
+						curSum = curSum + a[k];
 					while (true) {
+						// 处理在k==j时 的cursum重新置零的问题
+//						System.out.println("cursum = " + curSum);
 						if (flag == 1) break;
-						System.out.println("here" + flag);
-						if (k > i) jp[0][i].setBackground(Color.WHITE);
-						if (j == i || k == i) {
-							jp[0][k].setBackground(Color.pink);
+						// 当区间只有一个元素时，j==i
+						if (j == i || k == i)
+						{
+							jp[0][i].setBackground(Color.pink);
 							continue;
 						}
-						else if (k == i + 1) {
+						if (k > i) jp[0][i].setBackground(Color.WHITE);
+						if (k == i + 1) {
 							jp[0][k].setBackground(Color.pink);
 							jp[0][k].setVisible(true);
 						}
@@ -99,21 +108,21 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 							jp[0][k - 1].setVisible(false);
 							jp[0][k].setVisible(true);
 						}
-//						if (k - 1 >= i) {
-//							jp[0][k].setBackground(Color.pink);
-//							jp[0][k-1].setVisible(false);
-//							jp[0][k].setVisible(true);
-//
-//							jp[0][i].setVisible(true);
-//						}
-
 						if (flag == 1) break;  // 多次检测
 					}
-					System.out.println("跳出来了");
 					flag = 0;
 				}
-				System.out.println("进入第二层循环");
+//				System.out.println("here");
+
+				MaxSum = Math.max(MaxSum, curSum);
+				curSum = a[i];
+				// 等待一个按键更新Maxsum
+				while (flag != 0) {
+				}
+//				System.out.println("here1");
+				flag = 0;
 				while (true) {
+//					curSum = a[i];
 					System.out.println("");
 					if (flag == 1) break;
 					if (j != i)
@@ -121,19 +130,20 @@ public class PanelGridLayout02 extends JPanel implements Runnable {
 					if (flag == 1) break;
 					System.out.println("");
 				}
-				System.out.println("跳出第二层循环");
+//				System.out.println("跳出第二层循环");
 				flag = 0;
-				if (curSum > MaxSum)
-					MaxSum = curSum;
+				System.out.println("");
 			}
 			while (true) {
+				curSum = 0;
 				if (flag == 1) break;
-				System.out.println("进入第三层循环");
+//				System.out.println("进入第三层循环");
 				jp[0][i].setVisible(false);
 				if (flag == 1) break;
 			}
-			System.out.println("跳出第三层循环");
+//			System.out.println("跳出第三层循环");
 			flag = 0;
 		}
+		System.out.println("the final answer is " + MaxSum);
 	}
 }

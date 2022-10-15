@@ -1,4 +1,4 @@
-package algorithm;
+package project;
 /*
  *   algorithm
  *   Author：fjs
@@ -10,7 +10,7 @@ package algorithm;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class sumOfSub {
+public class all_Algorithm {
 	public static void main(String[] args) {
 //		int[] array = {-2,111,-3,4,-1,2,1,-5,4};
 //		-2 111 -3 4 -1 2 1 -5 4

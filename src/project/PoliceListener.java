@@ -44,7 +44,7 @@ public class PoliceListener implements ActionListener {
 			if (e.getSource() == sl.jb) {
 //				System.out.println("触发鼠标事件");
 				sl.panelGrid.flag = 1;
-//				System.out.println("panelGrid中flag = " + sl.panelGrid.flag);
+				System.out.println("panelGrid中flag = " + sl.panelGrid.flag);
 				sl.curSum.setText("curSum = " + sl.panelGrid.curSum);
 				sl.MaxSum.setText("MaxSum = " + sl.panelGrid.MaxSum);
 			}
